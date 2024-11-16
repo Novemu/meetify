@@ -29,35 +29,37 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <h1 className="bg-black">Meetify</h1>
-      <Calendar
-        onClickDay={handleDateClick}
-        key={selectedDates.length}
-        tileClassName={({ date }) =>
-          selectedDates.some(
-            (selectedDate) =>
-              selectedDate.toDateString() === date.toDateString()
-          )
-            ? "selected-date"
-            : undefined
-        }
-      />
-      <p>Selected Dates:</p>
-      <ul>
-        {selectedDates.map((date, index) => (
-          <li key={index}>{date.toDateString()}</li>
-        ))}
-      </ul>
+      <h1 className="flex justify-center text-7xl bold">Meetify</h1>
+      <div className="ml-20 mt-20">
+        <Calendar
+          onClickDay={handleDateClick}
+          key={selectedDates.length}
+          tileClassName={({ date }) =>
+            selectedDates.some(
+              (selectedDate) =>
+                selectedDate.toDateString() === date.toDateString()
+            )
+              ? "selected-date"
+              : undefined
+          }
+        />
+        <p>Selected Dates:</p>
+        <ul>
+          {selectedDates.map((date, index) => (
+            <li key={index}>{date.toDateString()}</li>
+          ))}
+        </ul>
 
-      {/* Add custom styles for selected dates */}
-      <style>
-        {`
+        {/* Add custom styles for selected dates */}
+        <style>
+          {`
           .react-calendar__tile.selected-date {
             background-color: #0078d7;
             color: white;
           }
         `}
-      </style>
+        </style>
+      </div>
     </div>
   );
 };
